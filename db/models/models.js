@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 let CommunityCollegeSchema = mongoose.Schema({
   name: String,
-  address: String
+  address: String,
+  offered2Codes: Array
 })
 
 let CommunitCollegeContactSchema = mongoose.Schema({
@@ -10,7 +11,8 @@ let CommunitCollegeContactSchema = mongoose.Schema({
   phone: String,
   email: String,
   title: String,
-  address: String
+  address: String,
+  CommunityCollegeID: String
 })
 
 let K12HighSchoolSchema = mongoose.Schema({
