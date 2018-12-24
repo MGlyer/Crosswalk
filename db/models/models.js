@@ -46,12 +46,14 @@ let TopCode4Schema = mongoose.Schema({
 })
 
 let IndustrySectorSchema = mongoose.Schema({
-  name: String
+  name: String,
+  descriptor: String
 })
 
 let PathwaySchema = mongoose.Schema({
   name: String,
-  code: String
+  code: String,
+  descriptor: String
 })
 
 let CommunityCollege = mongoose.model('CommunityCollege', CommunityCollegeSchema)
