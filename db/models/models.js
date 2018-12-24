@@ -53,3 +53,25 @@ let PathwaySchema = mongoose.Schema({
   name: String,
   code: String
 })
+
+let CommunityCollege = mongoose.model('CommunityCollege', CommunityCollegeSchema)
+let CommunitCollegeContact = mongoose.model('CommunitCollegeContact', CommunitCollegeContactSchema)
+let K12HighSchool = mongoose.model('K12HighSchool', K12HighSchoolSchema)
+let SchoolContact = mongoose.model('SchoolContact', SchoolContactSchema)
+let DistrictContact = mongoose.model('DistrictContact', DistrictContactSchema)
+let TopCode2 = mongoose.model('TopCode2', TopCode2Schema)
+let TopCode4 = mongoose.model('TopCode4', TopCode4Schema)
+let IndustrySector = mongoose.model('IndustrySector', IndustrySectorSchema)
+let Pathway = mongoose.model('Pathway', PathwaySchema)
+
+module.exports = {
+  CommunityCollege,
+  CommunitCollegeContact,
+  K12HighSchool,
+  SchoolContact,
+  DistrictContact,
+  TopCode2,
+  TopCode4,
+  IndustrySector,
+  Pathway
+}
