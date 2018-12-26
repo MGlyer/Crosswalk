@@ -46,7 +46,8 @@ let TopCode2Schema = mongoose.Schema({
 
 let TopCode4Schema = mongoose.Schema({
   name: String,
-  code: String
+  code: String,
+  Top2Parent: String
 })
 
 let IndustrySectorSchema = mongoose.Schema({

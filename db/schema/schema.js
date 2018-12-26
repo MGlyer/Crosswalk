@@ -118,6 +118,21 @@ const SchoolContactType = new GraphQLObjectType({
   })
 })
 
+TopCode2Type = new GraphQLObjectType({
+  name: 'Top Code 2',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    code: {type: GraphQLString},
+    TopCode4: {
+      type: new GraphQLList(TopCode4Type),
+      resolve(parent, args) {
+        return TopCode4.find({Top2Parent: parent.code})
+      }
+    }
+  })
+})
+
 module.exports = new GraphQLSchema({
   query: RootQuery
   // mutation: Mutation
