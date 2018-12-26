@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
-let CommunityCollegeSchema = mongoose.Schema({
+let CollegeSchema = mongoose.Schema({
   name: String,
   address: String,
   offered2Codes: Array
 })
 
-let CommunitCollegeContactSchema = mongoose.Schema({
+let CollegeContactSchema = mongoose.Schema({
   name: String,
   phone: String,
   email: String,
   title: String,
   address: String,
-  CommunityCollegeID: String
+  CollegeID: String
 })
 
 let K12HighSchoolSchema = mongoose.Schema({
@@ -58,8 +58,8 @@ let PathwaySchema = mongoose.Schema({
   descriptor: String
 })
 
-let CommunityCollege = mongoose.model('CommunityCollege', CommunityCollegeSchema)
-let CommunitCollegeContact = mongoose.model('CommunitCollegeContact', CommunitCollegeContactSchema)
+let College = mongoose.model('CommunityCollege', CommunityCollegeSchema)
+let CollegeContact = mongoose.model('CommunitCollegeContact', CommunitCollegeContactSchema)
 let K12HighSchool = mongoose.model('K12HighSchool', K12HighSchoolSchema)
 let SchoolContact = mongoose.model('SchoolContact', SchoolContactSchema)
 let DistrictContact = mongoose.model('DistrictContact', DistrictContactSchema)
@@ -69,8 +69,8 @@ let IndustrySector = mongoose.model('IndustrySector', IndustrySectorSchema)
 let Pathway = mongoose.model('Pathway', PathwaySchema)
 
 module.exports = {
-  CommunityCollege,
-  CommunitCollegeContact,
+  College,
+  CollegeContact,
   K12HighSchool,
   SchoolContact,
   DistrictContact,

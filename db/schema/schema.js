@@ -5,8 +5,8 @@ const {GraphQLObjectType, GraphQLString, GraphQLSchema,
         GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull} = graphql
 
 const { 
-  CommunityCollege,
-  CommunitCollegeContact,
+  College,
+  CollegeContact,
   K12HighSchool,
   SchoolContact,
   DistrictContact,
@@ -16,16 +16,16 @@ const {
   Pathway
 } = require('../models/models.js')
 
-const CommunityCollegeType = new GraphQLObjectType({
-  name: 'Community College',
+const CollegeType = new GraphQLObjectType({
+  name: 'College',
   fields: () => ({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
     address: {type: GraphQLString},
-    CommunitCollegeContact: {
-      type: new GraphQLList(CommunitCollegeContactType),
+    CollegeContact: {
+      type: new GraphQLList(CollegeContactType),
       resolve (parent, args) {
-        return CommunitCollegeContact.find({CommunityCollegeID: parent.id})
+        return CollegeContact.find({CollegeID: parent.id})
       }
     },
     TopCode2: {
@@ -45,6 +45,19 @@ const CommunityCollegeType = new GraphQLObjectType({
         }
       }
     }
+  })
+})
+
+const CollegeContactType = new GraphQLObjectType({
+  name: 'College Contact',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    phone: {type: GraphQLString},
+    email: {type: GraphQLString},
+    title: {type: GraphQLString},
+    address: {type: GraphQLString},
+    collegeID: {type: GraphQLString}
   })
 })
 
