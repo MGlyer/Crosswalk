@@ -118,8 +118,8 @@ const SchoolContactType = new GraphQLObjectType({
   })
 })
 
-TopCode2Type = new GraphQLObjectType({
-  name: 'Top Code 2',
+const TopCode2Type = new GraphQLObjectType({
+  name: 'TopCode2',
   fields: () => ({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
@@ -133,8 +133,8 @@ TopCode2Type = new GraphQLObjectType({
   })
 })
 
-TopCode4Type = new GraphQLObjectType({
-  name: 'Top Code 4',
+const TopCode4Type = new GraphQLObjectType({
+  name: 'TopCode4',
   fields: () => ({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
