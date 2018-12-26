@@ -166,6 +166,23 @@ TopCode4Type = new GraphQLObjectType({
   })
 })
 
+const PathwayType = new GraphQLObjectType({
+  name: 'Pathway',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    code: {type: GraphQLString},
+    descriptor: {type: GraphQLString},
+    //industry type
+    //K12 type
+    //top code 4
+    //top code 2
+    //k12 type
+    //district contact
+    //college contact
+  })
+})
+
 module.exports = new GraphQLSchema({
   query: RootQuery
   // mutation: Mutation
