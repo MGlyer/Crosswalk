@@ -12,7 +12,8 @@ let CollegeContactSchema = mongoose.Schema({
   email: String,
   title: String,
   address: String,
-  CollegeID: String
+  CollegeID: String,
+  Top4Codes: Array
 })
 
 let K12HighSchoolSchema = mongoose.Schema({
