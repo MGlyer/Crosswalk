@@ -85,7 +85,7 @@ const CollegeContactType = new GraphQLObjectType({
   })
 })
 
-const K12HighSchool = new GraphQLObjectType({
+const K12HighSchoolType = new GraphQLObjectType({
   name: 'K12 High School',
   fields: () => ({
     id: {type: GraphQLID},
@@ -94,7 +94,25 @@ const K12HighSchool = new GraphQLObjectType({
     SchoolContact: {
       type: SchoolContactType,
       resolve(parent, args) {
-        return K12HighSchool.findById(parent.id)
+        return SchoolContact.findOne({schoolID: parent.id})
+      }
+    }
+  })
+})
+
+const SchoolContactType = new GraphQLObjectType({
+  name: 'School Contact',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    phone: {type: GraphQLString},
+    email: {type: GraphQLString},
+    title: {type: GraphQLString},
+    address: {type: GraphQLString},
+    K12HighSchool: {
+      type: K12HighSchoolType,
+      resolve(parent, args) {
+        return K12HighSchool.findById(parent.SchoolID)
       }
     }
   })

@@ -27,6 +27,7 @@ let SchoolContactSchema = mongoose.Schema({
   email: String,
   title: String,
   address: String,
+  SchoolID: String
   //pathway ??
 })
 
