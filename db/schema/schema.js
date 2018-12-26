@@ -183,6 +183,33 @@ const PathwayType = new GraphQLObjectType({
   })
 })
 
+const RootQuery = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {
+    pathway: {
+      type: PathwayType,
+      args: {code: {type: GraphQLString}},
+      resolve(parent, args) {
+        return Pathway.find({code: args.code})
+      }
+    },
+    topCode4: {
+      type: TopCode4Type,
+      args: {code: {type: GraphQLString}},
+      resolve(parents, args) {
+        return TopCode4.find({code: args.code})
+      }
+    },
+    topCode2: {
+      type: TopCode2Type,
+      args: {code: {type: GraphQLString}},
+      resolve(parents, args) {
+        return TopCode2.find({code: args.code})
+      }
+    }
+  }
+})
+
 module.exports = new GraphQLSchema({
   query: RootQuery
   // mutation: Mutation
