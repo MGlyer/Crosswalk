@@ -206,6 +206,13 @@ const RootQuery = new GraphQLObjectType({
       resolve(parents, args) {
         return TopCode2.find({code: args.code})
       }
+    },
+    K12HighSchool: {
+      type: K12HighSchoolType,
+      args: {name: {type: GraphQLString}},
+      resolve(parents, args) {
+        return K12HighSchool.findOne({name: args.name})
+      }
     }
   }
 })
