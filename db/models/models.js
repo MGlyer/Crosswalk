@@ -47,7 +47,8 @@ let TopCode2Schema = mongoose.Schema({
 let TopCode4Schema = mongoose.Schema({
   name: String,
   code: String,
-  Top2Parent: String
+  Top2Parent: String,
+  pathwaysUsedIn: Array
 })
 
 let IndustrySectorSchema = mongoose.Schema({
@@ -58,7 +59,8 @@ let IndustrySectorSchema = mongoose.Schema({
 let PathwaySchema = mongoose.Schema({
   name: String,
   code: String,
-  descriptor: String
+  descriptor: String,
+  Top4Codes: Array
 })
 
 let College = mongoose.model('CommunityCollege', CollegeSchema)

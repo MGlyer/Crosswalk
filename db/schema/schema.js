@@ -133,6 +133,39 @@ TopCode2Type = new GraphQLObjectType({
   })
 })
 
+TopCode4Type = new GraphQLObjectType({
+  name: 'Top Code 4',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    code: {type: GraphQLString},
+    pathway: {
+      type: new GraphQLList(PathwayType),
+      resolve(parent, args) {
+        let toReturn = []
+        for (var i = 0; i < parent.pathwaysUsedIn.length; i++) {
+          Pathway.findOne({code: parent.pathwaysUsedIn[i]}, (err, docs) => {
+            if (err) return err
+            else {
+              toReturn.push(docs)
+              if (toReturn.length === parent.pathwaysUsedIn.length) {
+                return toReturn
+              }
+            }
+          })
+        }
+      }
+    },
+    TopCode2: {
+      type: TopCode2Type,
+      resolve(parent, args) {
+        let code2 = parent.code.slice(0,1)
+        return TopCode2.findOne({code: code2})
+      }
+    }
+  })
+})
+
 module.exports = new GraphQLSchema({
   query: RootQuery
   // mutation: Mutation
