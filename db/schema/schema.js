@@ -85,6 +85,21 @@ const CollegeContactType = new GraphQLObjectType({
   })
 })
 
+const K12HighSchool = new GraphQLObjectType({
+  name: 'K12 High School',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    address: {type: GraphQLString},
+    SchoolContact: {
+      type: SchoolContactType,
+      resolve(parent, args) {
+        return K12HighSchool.findById(parent.id)
+      }
+    }
+  })
+})
+
 module.exports = new GraphQLSchema({
   query: RootQuery
   // mutation: Mutation

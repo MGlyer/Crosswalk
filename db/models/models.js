@@ -59,8 +59,8 @@ let PathwaySchema = mongoose.Schema({
   descriptor: String
 })
 
-let College = mongoose.model('CommunityCollege', CommunityCollegeSchema)
-let CollegeContact = mongoose.model('CommunitCollegeContact', CommunitCollegeContactSchema)
+let College = mongoose.model('CommunityCollege', CollegeSchema)
+let CollegeContact = mongoose.model('CommunitCollegeContact', CollegeContactSchema)
 let K12HighSchool = mongoose.model('K12HighSchool', K12HighSchoolSchema)
 let SchoolContact = mongoose.model('SchoolContact', SchoolContactSchema)
 let DistrictContact = mongoose.model('DistrictContact', DistrictContactSchema)
