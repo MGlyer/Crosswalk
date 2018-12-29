@@ -159,7 +159,7 @@ const TopCode4Type = new GraphQLObjectType({
     TopCode2: {
       type: TopCode2Type,
       resolve(parent, args) {
-        let code2 = parent.code.slice(0,1)
+        let code2 = parent.code.slice(0,2)
         return TopCode2.findOne({code: code2})
       }
     }

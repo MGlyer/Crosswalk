@@ -12,7 +12,7 @@ const {
   TopCode4,
   IndustrySector,
   Pathway
-} = require('../models/models.js')
+} = require('./models/models.js')
 
 mongoose.connect(dbURL)
 let db = mongoose.connection
@@ -26,10 +26,54 @@ const populatePathways = () => {
       descriptor,
       Top4Codes
     })
+    console.log('saving pathway: ', toSave)
     toSave.save()
   })
 }
 
-db.once('open', () => {
-  console.log('connected to mlab')
-})
+const populate2Code = () => {
+  topCode2.forEach((topCode2) => {
+    let {name, code} = topCode2
+    let toSave = new TopCode2({
+      name,
+      code
+    })
+    console.log('saving TopCode2: ', toSave)
+    toSave.save()
+  })
+}
+
+const populate4Code = () => {
+  topCode4.forEach((topCode4) => {
+    let {name, code, Top2Parent, pathwaysUsedIn} = topCode4
+    let toSave = new TopCode4({
+      name,
+      code,
+      Top2Parent,
+      pathwaysUsedIn
+    })
+    console.log('saving topCode4: ', toSave)
+    toSave.save()
+  })
+}
+
+const populateK12HighSchool = () => {
+  K12HighSchools.forEach((school) => {
+    let {name, address, pathwaysOffered} = school
+    let toSave = new K12HighSchool({
+      name,
+      address,
+      pathwaysOffered
+    })
+    console.log('saving K12 School: ', toSave)
+    toSave.save()
+  })
+}
+
+module.exports = {
+  db,
+  populatePathways,
+  populate2Code,
+  populate4Code,
+  populateK12HighSchool
+}

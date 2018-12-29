@@ -113,7 +113,39 @@ let topCode4 = [
     pathwaysUsedIn: ['200', '201', '202']
   },
 ]
-let K12HighSchools = []
+
+let K12HighSchools = [
+  {
+    name: 'Anaheim High School',
+    address: '811 W Lincoln Ave, Anaheim, CA 92805',
+    pathwaysOffered: ['198']
+  },
+  {
+    name: 'Cypress High School',
+    address: '9801 Valley View St, Cypress, CA 90630',
+    pathwaysOffered: ['201']
+  },
+  {
+    name: 'Katella High School',
+    address: '2200 E Wagner Ave, Anaheim, CA 92806',
+    pathwaysOffered: ['201']
+  },
+  {
+    name: 'Kennedy High School',
+    address: '8281 Walker St, La Palma, CA 90623',
+    pathwaysOffered: ['201']
+  },
+  {
+    name: 'Savanna High School',
+    address: '301 N Gilbert St, Anaheim, CA 92801',
+    pathwaysOffered: ['201']
+  },
+  {
+    name: 'Western High School',
+    address: '501 S Western Ave, Anaheim, CA 92804',
+    pathwaysOffered: ['201']
+  }
+]
 
 const fillTopCode2 = () => {
   for (var i = 0; i < 21; i++) {
