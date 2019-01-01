@@ -4,7 +4,7 @@ const gqlServer = express()
 const cors = require('cors')
 const graphqlHTTP = require('express-graphql')
 const schema = require('../db/schema/schema')
-const {db, populatePathways, populate2Code, populate4Code, populateK12HighSchool} = require('../db/index')
+const {db, populatePathways, populate2Code, populate4Code, populateK12HighSchool, populateSchoolContact} = require('../db/index')
 
 //APP SECTION
 //MiddleWare
@@ -18,6 +18,7 @@ db.once('open', () => {
   // populate2Code()
   // populate4Code()
   // populateK12HighSchool()
+  // populateSchoolContact()
   console.log('connected to mlab!')
 })
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const dbURL = require('./dbconfig.js')
-const { pathways, topCode2, topCode4, K12HighSchools } = require('./dummyData.js')
+const { pathways, topCode2, topCode4, K12HighSchools, schoolContacts } = require('./dummyData.js')
 
 const { 
   College,
@@ -70,10 +70,45 @@ const populateK12HighSchool = () => {
   })
 }
 
+// const makePhoneNumber = () => {
+//   let num = ''
+//   while (num.length < 13) {
+//     if (num.length === 3 || num.length === 7) {
+//       num += '-'
+//     } else {
+//       let newNum = Math.floor(Math.random() * 10)
+//       num += (newNum)
+//     }
+//   }
+//   return num
+// }
+
+const populateSchoolContact = () => {
+  schoolContacts.forEach((contact) => {
+    let {name, phone, email, title, address} = contact
+    K12HighSchool.findOne({address}, (err, docs) => {
+      if (err) console.log(err)
+      else {
+        let toSave = new SchoolContact({
+          name,
+          phone,
+          email,
+          title,
+          address,
+          SchoolID: docs._id
+        })
+        console.log('saving a new contact: ', toSave)
+        toSave.save()
+      }
+    })
+  })
+}
+
 module.exports = {
   db,
   populatePathways,
   populate2Code,
   populate4Code,
-  populateK12HighSchool
+  populateK12HighSchool,
+  populateSchoolContact
 }

@@ -86,7 +86,7 @@ const CollegeContactType = new GraphQLObjectType({
 })
 
 const K12HighSchoolType = new GraphQLObjectType({
-  name: 'K12 High School',
+  name: 'K12HighSchool',
   fields: () => ({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
@@ -94,14 +94,14 @@ const K12HighSchoolType = new GraphQLObjectType({
     SchoolContact: {
       type: SchoolContactType,
       resolve(parent, args) {
-        return SchoolContact.findOne({schoolID: parent.id})
+        return SchoolContact.findOne({SchoolID: parent._id})
       }
     }
   })
 })
 
 const SchoolContactType = new GraphQLObjectType({
-  name: 'School Contact',
+  name: 'SchoolContact',
   fields: () => ({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
@@ -190,21 +190,21 @@ const RootQuery = new GraphQLObjectType({
       type: PathwayType,
       args: {code: {type: GraphQLString}},
       resolve(parent, args) {
-        return Pathway.find({code: args.code})
+        return Pathway.findOne({code: args.code})
       }
     },
     topCode4: {
       type: TopCode4Type,
       args: {code: {type: GraphQLString}},
       resolve(parents, args) {
-        return TopCode4.find({code: args.code})
+        return TopCode4.findOne({code: args.code})
       }
     },
     topCode2: {
       type: TopCode2Type,
       args: {code: {type: GraphQLString}},
       resolve(parents, args) {
-        return TopCode2.find({code: args.code})
+        return TopCode2.findOne({code: args.code})
       }
     },
     K12HighSchool: {
@@ -212,6 +212,13 @@ const RootQuery = new GraphQLObjectType({
       args: {name: {type: GraphQLString}},
       resolve(parents, args) {
         return K12HighSchool.findOne({name: args.name})
+      }
+    },
+    K12WithPath: {
+      type: new GraphQLList(K12HighSchoolType),
+      args: {pathwayCode: {type: GraphQLString}},
+      resolve(parents, args) {
+        return K12HighSchool.find({pathwaysOffered: {$in: [args.pathwayCode]}})
       }
     }
   }

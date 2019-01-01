@@ -154,6 +154,57 @@ const fillTopCode2 = () => {
   }
 }
 
+let schoolContacts = [
+  {
+    name: 'Minerva McGonagall',
+    phone: '949-293-1111',
+    email: 'minerva@gmail',
+    title: 'School Admin',
+    address: '811 W Lincoln Ave, Anaheim, CA 92805',
+    SchoolID: null
+  },
+  {
+    name: 'Severus Snape',
+    phone: '949-222-2222',
+    email: 'Severus@gmail',
+    title: 'School Admin',
+    address: '9801 Valley View St, Cypress, CA 90630',
+    SchoolID: null
+  },
+  {
+    name: 'Horace Slughorn',
+    phone: '949-323-3333',
+    email: 'Horace@gmail',
+    title: 'School Admin',
+    address: '2200 E Wagner Ave, Anaheim, CA 92806',
+    SchoolID: null
+  },
+  {
+    name: 'Alastor Moody',
+    phone: '949-424-4444',
+    email: 'Alastor@gmail',
+    title: 'School Admin',
+    address: '8281 Walker St, La Palma, CA 90623',
+    SchoolID: null
+  },
+  {
+    name: 'Sybill Trelawney',
+    phone: '949-123-9876',
+    email: 'Sybill@gmail',
+    title: 'School Admin',
+    address: '301 N Gilbert St, Anaheim, CA 92801',
+    SchoolID: null
+  },
+  {
+    name: 'Fillus Flitwick',
+    phone: '714-234-9836',
+    email: 'Fillus@gmail',
+    title: 'School Admin',
+    address: '501 S Western Ave, Anaheim, CA 92804',
+    SchoolID: null
+  }
+]
+
 
 fillTopCode2()
 
@@ -161,5 +212,6 @@ module.exports = {
   pathways,
   topCode2,
   topCode4,
-  K12HighSchools
+  K12HighSchools,
+  schoolContacts
 }
