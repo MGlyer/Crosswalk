@@ -10,7 +10,12 @@ class App extends React.Component {
   state = {
     pageDisplay: 1,
     searchCode: '',
-    industryData: null
+    industryData: null,
+    pathwayData: null,
+    schoolData: null,
+    top4CodeData: null,
+    allPathwayCodes: [],
+    validPathwayCodes: []
   }
 
   handleCodeSearch = (e) => {
@@ -20,6 +25,7 @@ class App extends React.Component {
         axios.get('/initialSearch', {params: {code: this.state.searchCode}})
              .then((response) => {
                console.log(response.data)
+               this.setState({industryData: response.data})
                response.data.forEach((industry) => {
                  let {name} = industry
                  let tag = document.getElementById(name)
@@ -32,6 +38,23 @@ class App extends React.Component {
     })
   }
 
+  handleQuickPathwaySearch = (e) => {
+    let title = e.target.id
+    axios.get('/quickPathwaySearch', {params: {title}})
+         .then((response) => {
+           console.log(response.data)
+           this.setState({industryData: response.data, allPathwayCodes: response.data.pathways})
+         })
+         .catch((err) => console.error(err))
+  }
+
+  handleFullPathwySearch = () => {
+    axios.get('/fullPathwaySearch', {params: {pathwayCodes: this.state.pathwaysCodes}})
+         .then((response) => {
+           console.log(response.data)
+        })
+  }
+
   render() {
     if (this.state.pageDisplay === 1) {
       return(
@@ -40,7 +63,7 @@ class App extends React.Component {
               <h2>Crosswalk</h2>
               <h3>College Focus</h3>
           </div>
-          <MainPage />
+          <MainPage handleQuickPathwaySearch = {this.handleQuickPathwaySearch}/>
           <input type="text" onChange={this.handleCodeSearch}/>
         </div>
       )

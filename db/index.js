@@ -127,6 +127,27 @@ const industrySearch = (searchCode, cb) => {
   })
 }
 
+const quickPathwaySearch = (industry, cb) => {
+  IndustrySector.findOne({name: industry}, (err, docs) => {
+    err ? cb(err) : cb (null, docs)
+  })
+}
+
+const pathwayDataSearch = (pathwayCodes, cb) => {
+  let toReturn = []
+  pathwayCodes.forEach((code) => {
+    Pathway.findOne({code}, (err, docs) => {
+      if (err) cb(err)
+      else {
+        toReturn.push(docs)
+        if (toReturn.length === pathwayCodes.length) {
+          cb(null, toReturn)
+        }
+      }
+    })
+  })
+}
+
 module.exports = {
   db,
   populatePathways,
@@ -135,5 +156,7 @@ module.exports = {
   populateK12HighSchool,
   populateSchoolContact,
   populateIndustry,
-  industrySearch
+  industrySearch,
+  quickPathwaySearch,
+  pathwayDataSearch
 }
