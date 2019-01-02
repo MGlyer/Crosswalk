@@ -43,7 +43,7 @@ class MainPage extends React.Component{
               <img src="img/film.png" className="tag film" id="Entertainment" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}/>
               <img src="img/food on a tray.png" className="tag food" id="FILL_ME_IN" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}/>
               <img src="img/Health Science and Medical Technology.gif" className="tag healthScience" id="Health Science and Medical Technology" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}/>
-              <img src="img/hospitality.png" className="tag hospitality" id="Hospitality and Food Services" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}/>
+              <img src="img/hospitality.png" className="tag hospitality" id="Hospitality, Tourism, and Recreation" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}/>
           </div>
           <div id='rowThree'>
               <img src="img/Information and Communication Technologies.gif" className="tag it" id="Information and Communication Technologies" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}/>

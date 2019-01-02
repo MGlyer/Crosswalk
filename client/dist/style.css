@@ -12,6 +12,7 @@ h3{
   height: 75px;
   width: 75px;
   margin: 15px;
+  opacity: .75;
 }
 
 #rowOne, #rowTwo, #rowThree{

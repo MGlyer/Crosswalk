@@ -9,7 +9,8 @@ import MapAndInfo from './pathwaySelector.jsx'
 class App extends React.Component {
   state = {
     pageDisplay: 1,
-    searchCode: ''
+    searchCode: '',
+    industryData: null
   }
 
   handleCodeSearch = (e) => {
@@ -19,6 +20,12 @@ class App extends React.Component {
         axios.get('/initialSearch', {params: {code: this.state.searchCode}})
              .then((response) => {
                console.log(response.data)
+               response.data.forEach((industry) => {
+                 let {name} = industry
+                 let tag = document.getElementById(name)
+                 tag.style.opacity = 1
+                 console.log(name, tag)
+               })
              })
              .catch((err) => console.error(err))
       }
