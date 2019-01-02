@@ -45,13 +45,15 @@ class App extends React.Component {
   }
 
   handleQuickPathwaySearch = (e) => {
-    let title = e.target.id
-    axios.get('/quickPathwaySearch', {params: {title}})
-         .then((response) => {
-           console.log(response.data)
-           this.setState({industryData: response.data, allPathwayCodes: response.data.pathways, pageDisplay: 2})
-         })
-         .catch((err) => console.error(err))
+    if (e.target.style.opacity === "1") {
+      let title = e.target.id
+      axios.get('/quickPathwaySearch', {params: {title}})
+           .then((response) => {
+             console.log(response.data)
+             this.setState({industryData: response.data, allPathwayCodes: response.data.pathways, pageDisplay: 2})
+           })
+           .catch((err) => console.error(err))
+    }
   }
 
   handleFullPathwySearch = () => {
