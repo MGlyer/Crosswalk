@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-import App from './components/App'
+import App from './components/App.jsx'
 
 const dbURL = new ApolloClient({
   uri: 'http://localhost:8087/graphql'
 })
 
-class App extends React.Component {
+class Main extends React.Component {
   state = {
     //
   }
@@ -23,4 +23,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"))
+ReactDOM.render(<Main />, document.getElementById("app"))
