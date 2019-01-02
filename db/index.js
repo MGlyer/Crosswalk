@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const dbURL = require('./dbconfig.js')
-const { pathways, topCode2, topCode4, K12HighSchools, schoolContacts } = require('./dummyData.js')
+const { pathways, topCode2, topCode4, K12HighSchools, schoolContacts, industries } = require('./dummyData.js')
 
 const { 
   College,
@@ -104,11 +104,36 @@ const populateSchoolContact = () => {
   })
 }
 
+const populateIndustry = () => {
+  industries.forEach((industry) => {
+    let {code, name, descriptor, top4CodesUsed} = industry;
+    let toSave = new IndustrySector({
+      name,
+      code,
+      descriptor,
+      top4CodesUsed
+    })
+    console.log('saving a new industry: ', toSave)
+    toSave.save()
+  })
+}
+
+const industrySearch = (searchCode, cb) => {
+  IndustrySector.find({top4CodesUsed: {$in: [searchCode]}}, (err, docs) => {
+    if (err) cb(err)
+    else {
+      cb(null, docs)
+    }
+  })
+}
+
 module.exports = {
   db,
   populatePathways,
   populate2Code,
   populate4Code,
   populateK12HighSchool,
-  populateSchoolContact
+  populateSchoolContact,
+  populateIndustry,
+  industrySearch
 }

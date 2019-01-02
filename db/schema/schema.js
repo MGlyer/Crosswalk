@@ -139,7 +139,7 @@ const TopCode4Type = new GraphQLObjectType({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
     code: {type: GraphQLString},
-    pathway: {
+    pathways: {
       type: new GraphQLList(PathwayType),
       resolve(parent, args) {
         let toReturn = []
@@ -149,6 +149,7 @@ const TopCode4Type = new GraphQLObjectType({
             else {
               toReturn.push(docs)
               if (toReturn.length === parent.pathwaysUsedIn.length) {
+                console.log(toReturn)
                 return toReturn
               }
             }
@@ -220,7 +221,15 @@ const RootQuery = new GraphQLObjectType({
       resolve(parents, args) {
         return K12HighSchool.find({pathwaysOffered: {$in: [args.pathwayCode]}})
       }
-    }
+    },
+    // SchoolsWithTopCodeIncluded: {
+    //   type: new GraphQLList(TopCode4Type),
+    //   args:{code: {type: GraphQLString}},
+    //   resolve(parents, args) {
+    //     let toReturn = [];
+
+    //   }
+    // }
   }
 })
 

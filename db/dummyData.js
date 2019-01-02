@@ -52,6 +52,7 @@ let topCode2 = [
   {name: 'Commercial Servies', code: null},
 ]
 let topCode4 = [
+  //add in Industreis Used In list
   {
     name: 'Food Processing & Related Technology',
     code: '0113',
@@ -205,6 +206,15 @@ let schoolContacts = [
   }
 ]
 
+let industries = [
+  {
+    name: 'Hospitality, Tourism, and Recreation',
+    code: '10',
+    descriptor: genLorem(),
+    top4CodesUsed: ['0113', '1301', '1305', '1306', '1307', '1309', '1399', '0606', '0836']
+  }
+]
+
 
 fillTopCode2()
 
@@ -213,5 +223,6 @@ module.exports = {
   topCode2,
   topCode4,
   K12HighSchools,
-  schoolContacts
+  schoolContacts,
+  industries
 }

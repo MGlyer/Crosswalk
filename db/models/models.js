@@ -54,7 +54,9 @@ let TopCode4Schema = mongoose.Schema({
 
 let IndustrySectorSchema = mongoose.Schema({
   name: String,
-  descriptor: String
+  descriptor: String,
+  top4CodesUsed: Array,
+  code: String
 })
 
 let PathwaySchema = mongoose.Schema({
