@@ -34,6 +34,12 @@ class App extends React.Component {
                })
              })
              .catch((err) => console.error(err))
+      } else {
+        //resets opacity
+        let tags = document.getElementsByClassName('tag')
+        for (var i = 0; i < tags.length; i++) {
+          tags[i].style.opacity = .75
+        }
       }
     })
   }
@@ -43,7 +49,7 @@ class App extends React.Component {
     axios.get('/quickPathwaySearch', {params: {title}})
          .then((response) => {
            console.log(response.data)
-           this.setState({industryData: response.data, allPathwayCodes: response.data.pathways})
+           this.setState({industryData: response.data, allPathwayCodes: response.data.pathways, pageDisplay: 2})
          })
          .catch((err) => console.error(err))
   }
@@ -76,7 +82,6 @@ class App extends React.Component {
     } else if (this.state.pageDisplay === 3) {
       return (
         <div>
-          la la la
           <MapAndInfo />
         </div>
       )
