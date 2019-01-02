@@ -14,19 +14,20 @@ class App extends React.Component {
     if (this.state.pageDisplay === 1) {
       return(
         <div>
-          this is the first page
+          <MainPage />
         </div>
       )
     } else if (this.state.pageDisplay === 2) {
       return(
         <div>
-          this is the second page
+          <PathwaySelector />
         </div>
       )
     } else if (this.state.pageDisplay === 3) {
       return (
         <div>
-          this is the third page
+          la la la
+          <MapAndInfo />
         </div>
       )
     }

@@ -17,7 +17,7 @@ class Main extends React.Component {
   render() {
     return(
     <ApolloProvider client = {dbURL} >
-          <App />
+      <App />
     </ApolloProvider>
     )
   }
