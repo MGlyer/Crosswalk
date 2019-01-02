@@ -8,7 +8,22 @@ class pathwaySelector extends React.Component{
   render() {
     return(
       <div>
-        this is the pathwaySelector page
+        {this.props.pathways.length > 0 ? 
+          <div>
+            {this.props.pathways.map((path) => {
+              return(
+                <div>
+                  {path.name}
+                  <br/>
+                  {path.code}
+                  <br/>
+                  {path.descriptor}
+                </div>
+              )
+            })}
+          </div>
+          : null
+        }
       </div>
     )
   }

@@ -78,7 +78,7 @@ class App extends React.Component {
     } else if (this.state.pageDisplay === 2) {
       return(
         <div>
-          <PathwaySelector />
+          <PathwaySelector pathways= {this.state.allPathwayCodes}/>
         </div>
       )
     } else if (this.state.pageDisplay === 3) {
