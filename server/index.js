@@ -7,7 +7,7 @@ const schema = require('../db/schema/schema')
 
 //db and populate code
 const {db, populateIndustry, populatePathways, populate2Code, populate4Code, populateK12HighSchool, populateSchoolContact} = require('../db/index')
-const {industrySearch, quickPathwaySearch, pathwayDataSearch, schoolSearch} = require('../db/index')
+const {industrySearch, quickPathwaySearch, pathwayDataSearch, schoolSearch, contactRetrieval} = require('../db/index')
 
 
 //APP SECTION
@@ -61,11 +61,16 @@ server.get('/fullPathwaySearch', (req, res) => {
 server.get('/schoolSearch', (req, res) => {
   let {pathwayCode} = req.query
   console.log('in server, school, before db query', pathwayCode)
-  schoolSearch(pathwayCode, (err, data) => {
+  schoolSearch(pathwayCode, (err, schools) => {
     if (err) console.log(err)
     else {
-      //do another call to the database
-      res.send(data)
+      contactRetrieval(schools, (err, data) => {
+        if (err) console.log(err)
+        else {
+          let information = {schools, contacts: data}
+          res.send(information)
+        }
+      })
     }
   })
 })

@@ -154,6 +154,21 @@ const schoolSearch = (pathwayCode, cb) => {
   })
 }
 
+const contactRetrieval = (schools, cb) => {
+  let toReturn = []
+  schools.forEach((school) => {
+    SchoolContact.findById(school._id, (err, docs) => {
+      if (err) cb(err)
+      else {
+        toReturn.push(docs)
+        if (toReturn.length === schools.length) {
+          cb(null, toReturn)
+        }
+      }
+    })
+  })
+}
+
 module.exports = {
   db,
   populatePathways,
@@ -165,5 +180,6 @@ module.exports = {
   industrySearch,
   quickPathwaySearch,
   pathwayDataSearch,
-  schoolSearch
+  schoolSearch,
+  contactRetrieval
 }
