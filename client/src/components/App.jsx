@@ -15,7 +15,8 @@ class App extends React.Component {
     schoolData: null,
     top4CodeData: null,
     allPathwayCodes: [],
-    validPathwayCodes: []
+    validPathwayCodes: [],
+    pathwayCodeToSearch: null
   }
 
   handleCodeSearch = (e) => {
@@ -64,6 +65,13 @@ class App extends React.Component {
            console.log(response.data)
            this.setState({pathwayData: response.data})
         })
+  }
+
+  handleK12Search = () => {
+    axios.get('/schoolSearch', {params: {pathwayCode: this.state.pathwayCodeToSearch}})
+         .then((response) => {
+           console.log(response.data)
+         })
   }
 
   render() {

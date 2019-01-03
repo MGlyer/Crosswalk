@@ -148,6 +148,12 @@ const pathwayDataSearch = (pathwayCodes, cb) => {
   })
 }
 
+const schoolSearch = (pathwayCode, cb) => {
+  K12HighSchool.find({pathwaysOffered : {$in: [pathwayCode]}}, (err, docs) => {
+    err ? cb(err) : cb(null, docs)
+  })
+}
+
 module.exports = {
   db,
   populatePathways,
@@ -158,5 +164,6 @@ module.exports = {
   populateIndustry,
   industrySearch,
   quickPathwaySearch,
-  pathwayDataSearch
+  pathwayDataSearch,
+  schoolSearch
 }
