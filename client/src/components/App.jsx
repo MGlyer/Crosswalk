@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import MainPage from './mainPage.jsx'
 import PathwaySelector from './pathwaySelector.jsx'
-import MapAndInfo from './pathwaySelector.jsx'
+import MapAndInfo from './mapAndInfo.jsx'
 
 class App extends React.Component {
   state = {
@@ -12,11 +12,10 @@ class App extends React.Component {
     searchCode: '',
     industryData: null,
     pathwayData: [],
-    schoolData: null,
+    schoolsData: [],
     top4CodeData: null,
     allPathwayCodes: [],
     validPathwayCodes: [],
-    pathwayCodeToSearch: null
   }
 
   handleCodeSearch = (e) => {
@@ -67,11 +66,29 @@ class App extends React.Component {
         })
   }
 
-  handleK12Search = () => {
-    axios.get('/schoolSearch', {params: {pathwayCode: this.state.pathwayCodeToSearch}})
-         .then((response) => {
-           console.log(response.data)
-         })
+  matchContacts = (schools, contacts) => {
+    contacts.forEach((contact) => {
+      schools.forEach((school) => {
+        if (contact.SchoolID === school._id) {
+          school.contact = contact
+        }
+      })
+    })
+
+    return schools
+  }
+
+  handleK12Search = (code) => {
+    this.setState({pageDisplay: 3}, () => {
+      axios.get('/schoolSearch', {params: {pathwayCode: code}})
+           .then((response) => {
+             console.log(response.data)
+             let schoolInfo = this.matchContacts(response.data.schools, response.data.contacts)
+             console.log('modified school info: ', schoolInfo)
+             this.setState({schoolsData: schoolInfo})
+           })
+           .catch((err) => console.error(err))
+    })
   }
 
   render() {
@@ -89,13 +106,13 @@ class App extends React.Component {
     } else if (this.state.pageDisplay === 2) {
       return(
         <div>
-          <PathwaySelector pathways= {this.state.pathwayData}/>
+          <PathwaySelector pathways= {this.state.pathwayData} handleK12Search={this.handleK12Search} />
         </div>
       )
     } else if (this.state.pageDisplay === 3) {
       return (
         <div>
-          <MapAndInfo />
+          <MapAndInfo schoolsData={this.state.schoolsData} />
         </div>
       )
     }

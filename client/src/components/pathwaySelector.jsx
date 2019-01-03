@@ -21,7 +21,7 @@ class pathwaySelector extends React.Component{
           <div>
             {this.props.pathways.map((path, ind) => {
               return(
-                <div key={ind} className="pathwayMedallion" id={path.code} 
+                <div key={ind} className="pathwayMedallion" id={path.code} onClick={() => {this.props.handleK12Search(path.code)}}
                 onMouseEnter={() => this.handleHover(ind)} onMouseLeave={() => this.handleHover(ind)}>
                   <span className="pathwayName">
                     {path.name}
