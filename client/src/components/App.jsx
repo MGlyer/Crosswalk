@@ -11,7 +11,7 @@ class App extends React.Component {
     pageDisplay: 1,
     searchCode: '',
     industryData: null,
-    pathwayData: null,
+    pathwayData: [],
     schoolData: null,
     top4CodeData: null,
     allPathwayCodes: [],
@@ -50,16 +50,19 @@ class App extends React.Component {
       axios.get('/quickPathwaySearch', {params: {title}})
            .then((response) => {
              console.log(response.data)
-             this.setState({industryData: response.data, allPathwayCodes: response.data.pathways, pageDisplay: 2})
+             this.setState({industryData: response.data, allPathwayCodes: response.data.pathways, pageDisplay: 2}, () => {
+              this.handleFullPathwySearch()
+             })
            })
            .catch((err) => console.error(err))
     }
   }
 
   handleFullPathwySearch = () => {
-    axios.get('/fullPathwaySearch', {params: {pathwayCodes: this.state.pathwaysCodes}})
+    axios.get('/fullPathwaySearch', {params: {pathwayCodes: this.state.allPathwayCodes}})
          .then((response) => {
            console.log(response.data)
+           this.setState({pathwayData: response.data})
         })
   }
 
@@ -78,7 +81,7 @@ class App extends React.Component {
     } else if (this.state.pageDisplay === 2) {
       return(
         <div>
-          <PathwaySelector pathways= {this.state.allPathwayCodes}/>
+          <PathwaySelector pathways= {this.state.pathwayData}/>
         </div>
       )
     } else if (this.state.pageDisplay === 3) {

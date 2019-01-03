@@ -24,3 +24,18 @@ h3{
   font-size: 25px;
   padding-top: 50px;
 }
+
+.pathwayMedallion{
+  border-radius: 50%;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  background-color: #e8effc;
+  text-align: center;
+  margin: 25px;
+}
+
+.pathwayName, .pathwayColor{
+  color: #846c9b;
+  font-size: 20px;
+}
