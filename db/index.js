@@ -157,7 +157,7 @@ const schoolSearch = (pathwayCode, cb) => {
 const contactRetrieval = (schools, cb) => {
   let toReturn = []
   schools.forEach((school) => {
-    SchoolContact.findById(school._id, (err, docs) => {
+    SchoolContact.findOne({SchoolID: school._id}, (err, docs) => {
       if (err) cb(err)
       else {
         toReturn.push(docs)

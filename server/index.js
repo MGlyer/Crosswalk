@@ -80,10 +80,10 @@ server.listen(port, () => console.log('server now listening on ', port))
 
 
 //GRAPHQL
-gqlServer.use(cors())
-gqlServer.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: true
-}))
+// gqlServer.use(cors())
+// gqlServer.use('/graphql', graphqlHTTP({
+//   schema,
+//   graphiql: true
+// }))
 
-gqlServer.listen(8087, () => console.log('GraphQL now listening on 8087'))
+// gqlServer.listen(8087, () => console.log('GraphQL now listening on 8087'))
