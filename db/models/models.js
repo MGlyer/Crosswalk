@@ -19,7 +19,9 @@ let CollegeContactSchema = mongoose.Schema({
 let K12HighSchoolSchema = mongoose.Schema({
   name: String, 
   address: String,
-  pathwaysOffered: Array
+  pathwaysOffered: Array,
+  lat: String,
+  long: String
 })
 
 let SchoolContactSchema = mongoose.Schema({
