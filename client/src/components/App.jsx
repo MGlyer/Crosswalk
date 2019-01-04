@@ -99,8 +99,10 @@ class App extends React.Component {
               <h2>Crosswalk</h2>
               <h3>College Focus</h3>
           </div>
+          <div style={{textAlign: 'center'}}>
+            <input type="text" onChange={this.handleCodeSearch} style={{textAlign: 'center'}} />
+          </div>
           <MainPage handleQuickPathwaySearch = {this.handleQuickPathwaySearch}/>
-          <input type="text" onChange={this.handleCodeSearch}/>
         </div>
       )
     } else if (this.state.pageDisplay === 2) {
