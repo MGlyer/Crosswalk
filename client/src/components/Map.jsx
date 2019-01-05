@@ -1,40 +1,30 @@
 import React from 'react'
 
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import token from '../../../mapboxConfig.js'
+import ReactMapGL from 'react-map-gl'
+const token = require('../../../mapboxConfig.js').mapboxToken
 
-const Map = ReactMapboxGl({
-  accessToken: token
-});
  
-class MapView extends PureComponent {
+class MapView extends React.Component {
   state = {
     viewport: {
-      center: {
-        lat: 33.779611,
-        lng: -117.969351,
-      },
-      zoom: 10,
-    },
+      width: 400,
+      height: 400,
+      latitude: 37.7577,
+      longitude: -122.4376,
+      zoom: 8
+    }
   };
- 
-  render () {
+
+  render() {
     return (
-      <Map
-        style="mapbox://styles/mapbox/streets-v9"
-        containerStyle={{
-        height: "100vh",
-        width: "100vw"
-      }}>
-        <Layer
-          type="symbol"
-          id="marker"
-          layout={{ "icon-image": "marker-15" }}>
-          <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
-        </Layer>
-    </Map>
+      <ReactMapGL
+        {...this.state.viewport}
+        onViewportChange={(viewport) => this.setState({viewport})}
+        mapboxApiAccessToken={token}
+      />
     );
   }
+ 
 };
 
 export default MapView
