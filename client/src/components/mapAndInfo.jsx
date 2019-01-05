@@ -9,20 +9,12 @@ class MapAndInfo extends React.Component{
 
   render() {
     return(
-      <div>
+      <div className='mapBox'>
         {this.props.schoolsData.length > 0 ?
-          // this.props.schoolsData.map((school, ind) => {
-          //   return(
-          //     <div key={ind} >
-          //       {school.name}
-          //       <br/>
-          //       {school.contact.name}
-          //     </div>
-          //   )
-          // })
-          <MapView />
+          <MapView schools = {this.props.schoolsData} />
           : <p>Loading...</p>
         }
+        {/* <MapView /> */}
       </div>
     )
   }

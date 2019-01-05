@@ -82,7 +82,7 @@ class App extends React.Component {
     this.setState({pageDisplay: 3}, () => {
       axios.get('/schoolSearch', {params: {pathwayCode: code}})
            .then((response) => {
-             console.log(response.data)
+             console.log('post K12search, front end.  response from searching for the schools: ', response.data)
              let schoolInfo = this.matchContacts(response.data.schools, response.data.contacts)
              console.log('modified school info: ', schoolInfo)
              this.setState({schoolsData: schoolInfo})

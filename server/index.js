@@ -64,10 +64,12 @@ server.get('/schoolSearch', (req, res) => {
   schoolSearch(pathwayCode, (err, schools) => {
     if (err) console.log(err)
     else {
+      console.log('in server, schoolSearch, after fetching schools info: ', schools);
       contactRetrieval(schools, (err, data) => {
         if (err) console.log(err)
         else {
           let information = {schools, contacts: data}
+          console.log('in server, after school and contact fetch: ', information);
           res.send(information)
         }
       })
