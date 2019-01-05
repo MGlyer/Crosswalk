@@ -35,7 +35,7 @@ class MapView extends React.Component {
         <svg className="schoolMarker" onClick = {() => this.setState({popupInfo: school})}
         height={size} viewBox="0 0 24 24" style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}} >
           <path d={ICON}/>
-          <text x="12" y="18" font-family="sans-serif" font-size="20px" text-anchor="middle" fill="black">
+          <text x="12" y="18" fontFamily="sans-serif" fontSize="20px" textAnchor="middle" fill="black">
             {i}
           </text>
         </svg>
