@@ -1,6 +1,7 @@
 import React from 'react'
 // import MapView from './Map.jsx'
 import MapView from './AltMap.jsx'
+import Container from './mapContainer.jsx'
 
 
 class MapAndInfo extends React.Component{
@@ -12,7 +13,8 @@ class MapAndInfo extends React.Component{
     return(
       <div className='mapBox'>
         {this.props.schoolsData.length > 0 ?
-          <MapView schools = {this.props.schoolsData} />
+          // <MapView schools = {this.props.schoolsData} />
+          <Container schools = {this.props.schoolsData} />
           : <p>Loading...</p>
         }
         {/* <MapView /> */}
