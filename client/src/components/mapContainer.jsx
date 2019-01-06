@@ -28,7 +28,7 @@ export class Container extends React.Component {
           <Map google={this.props.google} zoom={12} initialCenter={{lat:33.8366, lng:-117.9143 }} style= {mapStyle}>
             {this.props.schools.map((school, i) => {
                 return(
-                    <Marker key={i} name={school.name} position={{lat: school.lat, lng: school.long}} onClick={() => this.selectMarker(school)} />
+                    <Marker key={i} title={school.name} name={school.name} position={{lat: school.lat, lng: school.long}} onClick={() => this.selectMarker(school)} />
                 )
             })}
                     <InfoWindow visible={this.state.showPopup} position={{lat: Number(this.state.popupInfo.lat) + 0.0001, lng: Number(this.state.popupInfo.long)}}
