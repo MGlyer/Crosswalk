@@ -18,9 +18,9 @@ class MapAndInfo extends React.Component{
             <Container schools = {this.props.schoolsData} />
           </div>
           <div className='infoBox'>
-              {this.props.schoolsData.map((school) => {
+              {this.props.schoolsData.map((school, i) => {
                 return(
-                  <div><p>{school.name}</p></div>
+                  <div key={i}><p>{school.name}</p></div>
                 )
               })}
           </div>
