@@ -19,8 +19,13 @@ class MapAndInfo extends React.Component{
           </div>
           <div className='infoBox'>
               {this.props.schoolsData.map((school, i) => {
+                let {contact} = school
                 return(
-                  <div key={i}><p>{school.name}</p></div>
+                  <div key={i} className='schoolBlock'>
+                    <p>{school.name} -- {school.address}</p>
+                    <p>{contact.name} -- {contact.title}</p>
+                    <p>phone: {contact.phone}  |  email: {contact.email}</p>
+                  </div>
                 )
               })}
           </div>
