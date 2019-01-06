@@ -11,10 +11,20 @@ class MapAndInfo extends React.Component{
 
   render() {
     return(
-      <div className='mapBox'>
+      <div>
         {this.props.schoolsData.length > 0 ?
-          // <MapView schools = {this.props.schoolsData} />
-          <Container schools = {this.props.schoolsData} />
+        <div className="mapAndInfo">
+          <div className='mapBox'>
+            <Container schools = {this.props.schoolsData} />
+          </div>
+          <div className='infoBox'>
+              {this.props.schoolsData.map((school) => {
+                return(
+                  <div><p>{school.name}</p></div>
+                )
+              })}
+          </div>
+        </div>
           : <p>Loading...</p>
         }
         {/* <MapView /> */}
