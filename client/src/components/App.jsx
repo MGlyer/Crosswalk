@@ -29,7 +29,8 @@ class App extends React.Component {
                response.data.forEach((industry) => {
                  let {name} = industry
                  let tag = document.getElementById(name)
-                 tag.style.opacity = 1
+                //  tag.style.opacity = 1
+                this.handleCSSChange(tag)
                  console.log(name, tag)
                })
              })
@@ -38,10 +39,17 @@ class App extends React.Component {
         //resets opacity
         let tags = document.getElementsByClassName('tag')
         for (var i = 0; i < tags.length; i++) {
-          tags[i].style.opacity = .75
+          tags[i].style.opacity = .5
         }
       }
     })
+  }
+
+  handleCSSChange = (target) => {
+    let {style} = target
+    style.opacity = 1
+    style.border = "6px solid yellow"
+    style.borderRadius = '50%'
   }
 
   handleQuickPathwaySearch = (e) => {

@@ -22,9 +22,9 @@ class MapAndInfo extends React.Component{
                 let {contact} = school
                 return(
                   <div key={i} className='schoolBlock'>
-                    <p>{school.name} -- {school.address}</p>
+                    <h4>{school.name} -- {school.address}</h4>
                     <p>{contact.name} -- {contact.title}</p>
-                    <p>phone: {contact.phone}  |  email: {contact.email}</p>
+                    <p>phone: {contact.phone}    ||    email: {contact.email}</p>
                   </div>
                 )
               })}
