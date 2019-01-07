@@ -1,5 +1,4 @@
 import React from 'react'
-// import MapView from './Map.jsx'
 import MapView from './AltMap.jsx'
 import Container from './mapContainer.jsx'
 import {CSVLink} from 'react-csv'
@@ -19,7 +18,6 @@ class MapAndInfo extends React.Component{
     let {pathwaySelected} = this.props
     let download = [['Name', 'Title', 'School', 'Phone', 'Email', 'Address']]
     download.push(['','Pathway' + pathwaySelected.code, pathwaySelected.name, '', '', ''])
-    console.log(schools)
     schools.forEach((school) => {
       let {name, phone, email, title, address} = school.contact
       let contactInformation = [name, title, school.name, phone, email, address]

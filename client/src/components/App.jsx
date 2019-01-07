@@ -22,17 +22,14 @@ class App extends React.Component {
   handleCodeSearch = (e) => {
     this.setState({searchCode: e.target.value}, () => {
       if (this.state.searchCode.length === 4) {
-        console.log(this.state.searchCode)
         axios.get('/initialSearch', {params: {code: this.state.searchCode}})
              .then((response) => {
-               console.log(response.data)
                this.setState({industryData: response.data})
                response.data.forEach((industry) => {
                  let {name} = industry
                  let tag = document.getElementById(name)
                 //  tag.style.opacity = 1
                 this.handleCSSChange(tag)
-                 console.log(name, tag)
                })
              })
              .catch((err) => console.error(err))
@@ -58,7 +55,6 @@ class App extends React.Component {
       let title = e.target.id
       axios.get('/quickPathwaySearch', {params: {title}})
            .then((response) => {
-             console.log(response.data)
              this.setState({industryData: response.data, allPathwayCodes: response.data.pathways, pageDisplay: 2}, () => {
               this.handleFullPathwySearch()
              })
@@ -70,7 +66,6 @@ class App extends React.Component {
   handleFullPathwySearch = () => {
     axios.get('/fullPathwaySearch', {params: {pathwayCodes: this.state.allPathwayCodes}})
          .then((response) => {
-           console.log(response.data)
            this.setState({pathwayData: response.data})
         })
   }
@@ -91,9 +86,7 @@ class App extends React.Component {
     this.setState({pageDisplay: 3, pathwaySelected: {name, code}}, () => {
       axios.get('/schoolSearch', {params: {pathwayCode: code}})
            .then((response) => {
-             console.log('post K12search, front end.  response from searching for the schools: ', response.data)
              let schoolInfo = this.matchContacts(response.data.schools, response.data.contacts)
-             console.log('modified school info: ', schoolInfo)
              this.setState({schoolsData: schoolInfo})
            })
            .catch((err) => console.error(err))

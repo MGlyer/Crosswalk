@@ -1,9 +1,11 @@
 const express = require('express')
 const server = express()
-const gqlServer = express()
-const cors = require('cors')
-const graphqlHTTP = require('express-graphql')
-const schema = require('../db/schema/schema')
+
+//depreciated imports
+// const gqlServer = express()
+// const cors = require('cors')
+// const graphqlHTTP = require('express-graphql')
+// const schema = require('../db/schema/schema')
 
 //db and populate code
 const {db, populateIndustry, populatePathways, populate2Code, populate4Code, populateK12HighSchool, populateSchoolContact} = require('../db/index')
@@ -29,7 +31,6 @@ db.once('open', () => {
 
 server.get('/initialSearch', (req, res) => {
   let {code} = req.query
-  console.log(code, req.query)
   industrySearch(code, (err, data) => {
     if (err) console.log(err)
     else {
@@ -41,7 +42,6 @@ server.get('/initialSearch', (req, res) => {
 
 server.get('/quickPathwaySearch', (req, res) => {
   let {title} = req.query
-  console.log('in server, quick, before db query', title)
   quickPathwaySearch(title, (err, data) => {
     err ? console.log(err) : res.send(data)
   })
@@ -49,7 +49,6 @@ server.get('/quickPathwaySearch', (req, res) => {
 
 server.get('/fullPathwaySearch', (req, res) => {
   let {pathwayCodes} = req.query
-  console.log('in server, full, before db query', pathwayCodes)
   pathwayDataSearch(pathwayCodes, (err, data) => {
     if (err) console.log(err)
     else {
@@ -60,16 +59,13 @@ server.get('/fullPathwaySearch', (req, res) => {
 
 server.get('/schoolSearch', (req, res) => {
   let {pathwayCode} = req.query
-  console.log('in server, school, before db query', pathwayCode)
   schoolSearch(pathwayCode, (err, schools) => {
     if (err) console.log(err)
     else {
-      console.log('in server, schoolSearch, after fetching schools info: ', schools);
       contactRetrieval(schools, (err, data) => {
         if (err) console.log(err)
         else {
           let information = {schools, contacts: data}
-          console.log('in server, after school and contact fetch: ', information);
           res.send(information)
         }
       })

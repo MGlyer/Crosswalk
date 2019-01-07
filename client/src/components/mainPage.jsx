@@ -6,8 +6,6 @@ class MainPage extends React.Component{
   state = {
     hoverFocus: null,
     selected: null,
-    // searchCode: '',
-    // pathInfo: this.props.data ? this.props.data : null
   }
 
   handleHover = (e) => {
