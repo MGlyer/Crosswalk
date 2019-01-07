@@ -16,7 +16,9 @@ class MapAndInfo extends React.Component{
 
   arrangeDownload = () => {
     let schools = this.props.schoolsData
+    let {pathwaySelected} = this.props
     let download = [['Name', 'Title', 'School', 'Phone', 'Email', 'Address']]
+    download.push(['','Pathway' + pathwaySelected.code, pathwaySelected.name, '', '', ''])
     console.log(schools)
     schools.forEach((school) => {
       let {name, phone, email, title, address} = school.contact
@@ -37,7 +39,10 @@ class MapAndInfo extends React.Component{
             <Container schools = {this.props.schoolsData} />
           </div>
           <div className="export">
-            <CSVLink class='btn-gradient green' filename={'K12 School Contact Information.csv'} data={this.state.csvData}>Download Contacts as CSV</CSVLink>
+            <CSVLink class='btn-gradient green' filename={`Pathway ${this.props.pathwaySelected.code} - ${this.props.pathwaySelected.name}: Contact Information.csv`} 
+            data={this.state.csvData}>
+              Export to Excel
+            </CSVLink>
           </div>
           <div className='infoBox'>
               {this.props.schoolsData.map((school, i) => {

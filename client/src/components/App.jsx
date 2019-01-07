@@ -16,6 +16,7 @@ class App extends React.Component {
     top4CodeData: null,
     allPathwayCodes: [],
     validPathwayCodes: [],
+    pathwaySelected: {}
   }
 
   handleCodeSearch = (e) => {
@@ -86,8 +87,8 @@ class App extends React.Component {
     return schools
   }
 
-  handleK12Search = (code) => {
-    this.setState({pageDisplay: 3}, () => {
+  handleK12Search = (code, name) => {
+    this.setState({pageDisplay: 3, pathwaySelected: {name, code}}, () => {
       axios.get('/schoolSearch', {params: {pathwayCode: code}})
            .then((response) => {
              console.log('post K12search, front end.  response from searching for the schools: ', response.data)
@@ -122,7 +123,7 @@ class App extends React.Component {
     } else if (this.state.pageDisplay === 3) {
       return (
         <div>
-          <MapAndInfo schoolsData={this.state.schoolsData} />
+          <MapAndInfo pathwaySelected={this.state.pathwaySelected} schoolsData={this.state.schoolsData} />
         </div>
       )
     }

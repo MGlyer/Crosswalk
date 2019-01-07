@@ -63,7 +63,8 @@ for the size of your initial circle*/
 }
 
 .infoBox {
-  text-align: center;
+  text-align: left;
+  margin-left: 150px;
 }
 
 .mapBox{
