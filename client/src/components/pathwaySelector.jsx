@@ -23,7 +23,7 @@ class pathwaySelector extends React.Component{
           <div className="circleHolder">
             {this.props.pathways.map((path, ind) => {
               return(
-                  <div key={ind} className="pathwayMedallion" id={path.code} onClick={() => {this.props.handleK12Search(path.code, path.name)}}
+                  <div key={ind} className="pathwayMedallion hvr-shrink" id={path.code} onClick={() => {this.props.handleK12Search(path.code, path.name)}}
                   onMouseEnter={() => this.handleHover(ind)} onMouseLeave={() => this.handleHover(ind)}>
                     <span className="pathwayName">
                       {path.name}
