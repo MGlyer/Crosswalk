@@ -26,22 +26,36 @@ h3{
 }
 
 .pathwayMedallion{
-  border-radius: 50%;
-  display: inline-block;
-  height: 200px;
+  display: table-cell;
+  height: 200px; /*change this and the width
+for the size of your initial circle*/
   width: 200px;
-  background-color: #e8effc;
   text-align: center;
   vertical-align: middle;
-  margin: 25px;
+  border-radius: 50%;
+  /*make it pretty*/
+  background: rgb(185, 158, 201);
+  font: 18px "josefin sans", arial; /*change this
+  for font-size and font-family*/
 }
 
 .pathwayName, .pathwayCode{
   position: relative;
-  color: #846c9b;
+  color: #fff;
   font-size: 20px;
   vertical-align: middle;
+  padding: 5px;
 }
+
+.pathwayDescriptor{
+  margin: 30px;
+  text-align: center;
+  font-size: 26px;
+}
+
+/* .circleHolder{
+  align-content: center;
+} */
 
 
 .schoolBlock {

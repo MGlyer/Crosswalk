@@ -17,25 +17,27 @@ class pathwaySelector extends React.Component{
   render() {
     return(
       <div>
+        <h2 style={{textAlign: 'center'}}>Pathway Selector</h2>
+        <h3 style={{textAlign: 'center'}}>Please select and available Pathway</h3>
         {this.props.pathways.length > 0 ? 
-          <div>
+          <div className="circleHolder">
             {this.props.pathways.map((path, ind) => {
               return(
-                <div key={ind} className="pathwayMedallion" id={path.code} onClick={() => {this.props.handleK12Search(path.code)}}
-                onMouseEnter={() => this.handleHover(ind)} onMouseLeave={() => this.handleHover(ind)}>
-                  <span className="pathwayName">
-                    {path.name}
-                  </span>
-                  <br/>
-                  <span className="pathwayCode" >
-                    {path.code}
-                  </span>
-                </div>
+                  <div key={ind} className="pathwayMedallion" id={path.code} onClick={() => {this.props.handleK12Search(path.code)}}
+                  onMouseEnter={() => this.handleHover(ind)} onMouseLeave={() => this.handleHover(ind)}>
+                    <span className="pathwayName">
+                      {path.name}
+                    </span>
+                    <br/><br/>
+                    <span className="pathwayCode" >
+                      {path.code}
+                    </span>
+                  </div>
               )
             })}
             <div>
               {this.state.showDescription ? 
-                <div>
+                <div className='pathwayDescriptor' >
                   {this.props.pathways[this.state.descriptionToShow].descriptor}
                 </div>
                 : null
