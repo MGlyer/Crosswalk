@@ -1,5 +1,4 @@
 import React from 'react'
-import { codeQuery } from '../queries/queries.js'
 import { graphql } from 'react-apollo';
 
 class MainPage extends React.Component{
