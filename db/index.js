@@ -1,5 +1,10 @@
 const mongoose = require('mongoose')
-const dbURL = require('./dbconfig.js')
+let dbURL;
+try {
+  dbURL = require('./dbconfig.js')
+} catch(err) {
+  dbURL = process.env.DBURL
+}
 const { pathways, topCode2, topCode4, K12HighSchools, schoolContacts, industries } = require('./dummyData.js')
 
 const { 

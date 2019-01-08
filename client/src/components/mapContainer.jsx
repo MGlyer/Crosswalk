@@ -1,7 +1,12 @@
 import React from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 
-const apiKey = require('../../../googleAPIKey')
+let apiKey
+try {
+  apiKey = require('../../../googleAPIKey')
+} catch(err) {
+  apiKey = process.env.APIKEY
+}
 
 const mapStyle = {
     width: '75%',

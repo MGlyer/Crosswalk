@@ -73,7 +73,7 @@ server.get('/schoolSearch', (req, res) => {
   })
 })
 
-const port = 8086
+const port = process.env.PORT || 8086
 server.listen(port, () => console.log('server now listening on ', port))
 
 
