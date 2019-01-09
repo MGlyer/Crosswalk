@@ -41,6 +41,7 @@ class MapAndInfo extends React.Component{
             data={this.state.csvData}>
               Export to Excel
             </CSVLink>
+            <button onClick={this.props.reset} class= 'btn-gradient green home'>Home</button>
           </div>
           <div className='infoBox'>
               {this.props.schoolsData.map((school, i) => {

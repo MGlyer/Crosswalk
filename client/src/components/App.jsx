@@ -19,6 +19,20 @@ class App extends React.Component {
     pathwaySelected: {}
   }
 
+  reset = () => {
+    this.setState({
+      pageDisplay: 1,
+      searchCode: '',
+      industryData: null,
+      pathwayData: [],
+      schoolsData: [],
+      top4CodeData: null,
+      allPathwayCodes: [],
+      validPathwayCodes: [],
+      pathwaySelected: {}
+    })
+  }
+
   handleCodeSearch = (e) => {
     this.setState({searchCode: e.target.value}, () => {
       if (this.state.searchCode.length === 4) {
@@ -116,7 +130,7 @@ class App extends React.Component {
     } else if (this.state.pageDisplay === 3) {
       return (
         <div>
-          <MapAndInfo pathwaySelected={this.state.pathwaySelected} schoolsData={this.state.schoolsData} />
+          <MapAndInfo pathwaySelected={this.state.pathwaySelected} schoolsData={this.state.schoolsData} reset = {this.reset} />
         </div>
       )
     }
